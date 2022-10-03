@@ -1,4 +1,4 @@
-# Portfolio of Projects for Full-Stack Development Project
+# Portfolio for Full-Stack Development Projects
 
 
 ### Project 1: Booking Site Fy-yur
