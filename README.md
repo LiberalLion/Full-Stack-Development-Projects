@@ -49,7 +49,7 @@ Applied concepts:
 - implement `errorhandler` to format & design appropiate error messages to client
 - becoming aware of the importance of extensive project documentation & testing.
 
-[View Project](https://github.com/LiberalLion/Full-Stack-Development-Projects/tree/master/project02_triviaAPI/finished).
+[View Project](https://github.com/LiberalLion/Full-Stack-Development-Projects/tree/masters/project02_trivia_API/finished).
 
 ### Project 3: Coffee Shop (Security & Authorization)
 
