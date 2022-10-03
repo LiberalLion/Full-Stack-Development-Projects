@@ -87,6 +87,7 @@ Used tech stack:
 - `CodePipeline` for Continuous Delivery (CD) & to watch Github Repo for changes
 - `CodeBuild` for Continuous Integration (CI), together with `pytest` for automated testing before deployment
 
+[View Project]()
 
 ### Project 5: Capstone
 
