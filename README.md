@@ -25,7 +25,7 @@ Applied concepts:
 - Create SQL-like Queries, but without any SQL syntax, only using SQLAlchemy ORM
 - How to clearly structurize a larger web application in different files & folders
 
-[View Project](https://github.com/LiberalLion/Full-Stack-Development-Projects/tree/master/project01_fyyur).
+[View Project](https://github.com/notaconduit/Full-Stack-Development-Projects/tree/master/project01_fyyur).
 
 ### Project 2: Trivia API
 
@@ -49,7 +49,7 @@ Applied concepts:
 - implement `errorhandler` to format & design appropiate error messages to client
 - becoming aware of the importance of extensive project documentation & testing.
 
-[View Project](https://github.com/LiberalLion/Full-Stack-Development-Projects/tree/masters/project02_trivia_API/finished).
+[View Project](https://github.com/notaconduit/Full-Stack-Development-Projects/tree/masters/project02_trivia_API/finished).
 
 ### Project 3: Coffee Shop (Security & Authorization)
 
@@ -66,7 +66,7 @@ Used tech stack:
 - `jose` JavaScript Object Signing and Encryption for JWTs. Useful for encoding, decoding, and verifying JWTs.
 - `postman` to automatize endpoint testing & verification of correct Authorization behaviour.
 
-[View Project](https://github.com/LiberalLion/Full-Stack-Development-Projects/tree/master/project03_coffee_shop/finished).
+[View Project](https://github.com/notaconduit/Full-Stack-Development-Projects/tree/master/project03_coffee_shop/finished).
 
 ### Project 4: Server Deployment, Containerization and Testing
 
@@ -87,7 +87,7 @@ Used tech stack:
 - `CodePipeline` for Continuous Delivery (CD) & to watch Github Repo for changes
 - `CodeBuild` for Continuous Integration (CI), together with `pytest` for automated testing before deployment
 
-[View Project](https://github.com/LiberalLion/Full-Stack-Development-Projects/tree/masters/project04_server_deployment/starter)
+[View Project](https://github.com/notaconduit/Full-Stack-Development-Projects/tree/masters/project04_server_deployment/starter)
 
 
 ### Project 5: Capstone
@@ -103,6 +103,6 @@ It covers following technical topics in 1 app:
 4. Authorization & Role based Authentification with `Auth0` (see `auth.py`)
 5. Deployment on `Heroku` (see `setup.sh`)
 
-[View Project](https://github.com/LiberalLion/Full-Stack-Development-Projects/tree/master/project05_capstone/finished).
+[View Project](https://github.com/notaconduit/Full-Stack-Development-Projects/tree/master/project05_capstone/finished).
 
 
