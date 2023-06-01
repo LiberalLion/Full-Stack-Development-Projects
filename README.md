@@ -94,7 +94,6 @@ Used tech stack:
 
 est. time spent: `20 hours` (no precourses)
 
-This is the last project of the `Udacity-Full-Stack-Nanodegree` Course.
 It covers following technical topics in 1 app:
 
 1. Database modeling with `postgres` & `sqlalchemy` (see `models.py`)
