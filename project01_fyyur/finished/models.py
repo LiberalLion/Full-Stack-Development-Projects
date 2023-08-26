@@ -46,7 +46,7 @@ class Venue(db.Model):
     seeking_description = db.Column(db.String(500)) # Because descriptions can be a little bit longer, I decided to accept input up to 500 characters
     venues = db.relationship('Artist', secondary=Show, backref=db.backref('shows', lazy='joined'))
     def __repr__(self):
-        return 'Venue Id:{} | Name: {}'.format(self.id, self.name)
+        return f'Venue Id:{self.id} | Name: {self.name}'
 
 class Artist(db.Model):
     __tablename__ = 'Artist'
@@ -64,4 +64,4 @@ class Artist(db.Model):
     seeking_description = db.Column(db.String(500)) # Because descriptions can be a little bit longer, I decided to accept input up to 500 characters
 
     def __repr__(self):
-        return 'Artist Id:{} | Name: {}'.format(self.id, self.name)
+        return f'Artist Id:{self.id} | Name: {self.name}'

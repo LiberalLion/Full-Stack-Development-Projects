@@ -35,7 +35,7 @@ def _logger():
 
 
 LOG = _logger()
-LOG.debug("Starting with log level: %s" % LOG_LEVEL )
+LOG.debug(f"Starting with log level: {LOG_LEVEL}")
 APP = Flask(__name__)
 
 def require_jwt(function):
@@ -44,7 +44,7 @@ def require_jwt(function):
     """
     @functools.wraps(function)
     def decorated_function(*args, **kws):
-        if not 'Authorization' in request.headers:
+        if 'Authorization' not in request.headers:
             abort(401)
         data = request.headers['Authorization']
         token = str.replace(str(data), 'Bearer ', '')
@@ -54,6 +54,7 @@ def require_jwt(function):
             abort(401)
 
         return function(*args, **kws)
+
     return decorated_function
 
 
@@ -88,7 +89,7 @@ def decode_jwt():
     """
     Check user token and return non-secret data
     """
-    if not 'Authorization' in request.headers:
+    if 'Authorization' not in request.headers:
         abort(401)
     data = request.headers['Authorization']
     token = str.replace(str(data), 'Bearer ', '')

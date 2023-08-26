@@ -297,17 +297,21 @@ def create_venue_submission():
       db.session.commit()
       # on successful db insert, flash success
       flashType = 'success'
-      flash('Venue {} was successfully listed!'.format(newVenue.name))
+      flash(f'Venue {newVenue.name} was successfully listed!')
     except: 
       # TODO DONE: on unsuccessful db insert, flash an error instead.
-      flash('An error occurred due to database insertion error. Venue {} could not be listed.'.format(request.form['name']))
+      flash(
+          f"An error occurred due to database insertion error. Venue {request.form['name']} could not be listed."
+      )
     finally:
       # Always close session
       db.session.close()
   else:
     flash(form.errors) # Flashes reason, why form is unsuccessful (not really pretty)
-    flash('An error occurred due to form validation. Venue {} could not be listed.'.format(request.form['name']))
-  
+    flash(
+        f"An error occurred due to form validation. Venue {request.form['name']} could not be listed."
+    )
+
   return render_template('pages/home.html', flashType = flashType)
 
 @app.route('/venues/<venue_id>', methods=['DELETE'])
@@ -634,16 +638,20 @@ def create_artist_submission():
       db.session.commit()
       # on successful db insert, flash success
       flashType = 'success'
-      flash('Artist {} was successfully listed!'.format(newArtist.name)) 
+      flash(f'Artist {newArtist.name} was successfully listed!')
     except: 
       # TODO DONE: on unsuccessful db insert, flash an error instead.
-      flash('An error occurred due to database insertion error. Artist {} could not be listed.'.format(request.form['name']))
+      flash(
+          f"An error occurred due to database insertion error. Artist {request.form['name']} could not be listed."
+      )
     finally:
       # Always close session
       db.session.close()
   else:
     flash(form.errors) # Flashes reason, why form is unsuccessful (not really pretty)
-    flash('An error occurred due to form validation. Artist {} could not be listed.'.format(request.form['name']))
+    flash(
+        f"An error occurred due to form validation. Artist {request.form['name']} could not be listed."
+    )
 
   return render_template('pages/home.html', flashType = flashType)
 

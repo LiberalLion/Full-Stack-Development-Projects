@@ -97,8 +97,8 @@ def create_drink(payload):
     """Creates new drink and returns it to client"""
     
     body = request.get_json()
-    new_drink = Drink(title = body['title'], recipe = """{}""".format(body['recipe']))
-    
+    new_drink = Drink(title = body['title'], recipe=f"""{body['recipe']}""")
+
     new_drink.insert()
     new_drink.recipe = body['recipe']
     return jsonify({
@@ -119,21 +119,21 @@ def update_drink(payload, drink_id):
 
     if not body:
       abort(400, {'message': 'request does not contain a valid JSON body.'})
-    
+
     # Find drink which should be updated by id
     drink_to_update = Drink.query.filter(Drink.id == drink_id).one_or_none()
 
     # Check if and which fields should be updated
     updated_title = body.get('title', None)
     updated_recipe = body.get('recipe', None)
-    
+
     # Depending on which fields are available, make apropiate updates
     if updated_title:
         drink_to_update.title = body['title']
-    
+
     if updated_recipe:
-        drink_to_update.recipe = """{}""".format(body['recipe'])
-    
+        drink_to_update.recipe = f"""{body['recipe']}"""
+
     drink_to_update.update()
 
     return jsonify({
@@ -155,10 +155,10 @@ def delete_drinks(payload, drink_id):
     drink_to_delete = Drink.query.filter(Drink.id == drink_id).one_or_none()
 
     if not drink_to_delete:
-        abort(404, {'message': 'Drink with id {} not found in database.'.format(drink_id)})
-     
+        abort(404, {'message': f'Drink with id {drink_id} not found in database.'})
+
     drink_to_delete.delete()
-    
+
     return jsonify({
     'success': True,
     'delete': drink_id

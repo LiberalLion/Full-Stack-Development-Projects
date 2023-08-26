@@ -7,7 +7,7 @@ from config import database_setup, SQLALCHEMY_TRACK_MODIFICATIONS
 # Database Setup 
 #----------------------------------------------------------------------------#
 
-database_path = "postgres://{}:{}@{}/{}".format(database_setup["user_name"], database_setup["password"], database_setup["port"], database_setup["database_name_production"])
+database_path = f'postgres://{database_setup["user_name"]}:{database_setup["password"]}@{database_setup["port"]}/{database_setup["database_name_production"]}'
 
 db = SQLAlchemy()
 

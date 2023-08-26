@@ -24,7 +24,7 @@ class TriviaTestCase(unittest.TestCase):
 
         self.app = create_app()
         self.client = self.app.test_client
-        self.database_path = "postgres://{}:{}@{}/{}".format(db_user, pwd, port, db_name)
+        self.database_path = f"postgres://{db_user}:{pwd}@{port}/{db_name}"
         setup_db(self.app, self.database_path)
 
         # binds the app to the current context
@@ -248,7 +248,7 @@ class TriviaTestCase(unittest.TestCase):
         # Second, make a DELETE request with newly created question
 
         last_category_id = Category.query.order_by(desc(Category.id)).first().id # contains id from last created category
-        res = self.client().delete('/categories/{}'.format(last_category_id))
+        res = self.client().delete(f'/categories/{last_category_id}')
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 200)
@@ -257,13 +257,15 @@ class TriviaTestCase(unittest.TestCase):
 
     def test_404_delete_category(self):
         """Test error DELETE /categories with an id which does not exist """
-        res = self.client().delete('/categories/{}'.format(1234567879))
+        res = self.client().delete('/categories/1234567879')
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 400)
         self.assertEqual(data['error'], 400)
         self.assertEqual(data['success'], False)
-        self.assertEqual(data['message'], 'Category with id {} does not exist.'.format(1234567879))
+        self.assertEqual(
+            data['message'], 'Category with id 1234567879 does not exist.'
+        )
 
 #----------------------------------------------------------------------------#
 # Tests for /questions DELETE
@@ -272,7 +274,7 @@ class TriviaTestCase(unittest.TestCase):
     def test_delete_question(self):
         """Test DELETE /question """
         # First, create a new question so it can later be deleted
-        
+
         # Used as header to POST /question
         json_create_question = {
             'question' : 'Will this question last long?',
@@ -286,7 +288,7 @@ class TriviaTestCase(unittest.TestCase):
         question_id = data['created'] # contains id from newly created question
 
         # Second, make a DELETE request with newly created question
-        res = self.client().delete('/questions/{}'.format(question_id))
+        res = self.client().delete(f'/questions/{question_id}')
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 200)
@@ -295,13 +297,15 @@ class TriviaTestCase(unittest.TestCase):
     
     def test_404_delete_question(self):
         """Test error DELETE /question with an id which does not exist """
-        res = self.client().delete('/questions/{}'.format(1234567879))
+        res = self.client().delete('/questions/1234567879')
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 400)
         self.assertEqual(data['error'], 400)
         self.assertEqual(data['success'], False)
-        self.assertEqual(data['message'], 'Question with id {} does not exist.'.format(1234567879))
+        self.assertEqual(
+            data['message'], 'Question with id 1234567879 does not exist.'
+        )
 
 #----------------------------------------------------------------------------#
 # Tests for /quizzes POST

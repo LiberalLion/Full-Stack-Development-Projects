@@ -117,7 +117,7 @@ def verify_decode_jwt(token):
     jsonurl = urlopen(f'https://{AUTH0_DOMAIN}/.well-known/jwks.json')
     jwks = json.loads(jsonurl.read())
     unverified_header = jwt.get_unverified_header(token)
-    
+
     # Check if Key id is in unverified header
     if 'kid' not in unverified_header:
         raise AuthError({
@@ -137,31 +137,25 @@ def verify_decode_jwt(token):
             }
     if rsa_key:
         try:
-            # Use Auth Config (top of file) to decode JWT and return payload if succesful
-            payload = jwt.decode(
+            return jwt.decode(
                 token,
                 rsa_key,
                 algorithms=ALGORITHMS,
                 audience=API_AUDIENCE,
-                issuer='https://' + AUTH0_DOMAIN + '/'
+                issuer=f'https://{AUTH0_DOMAIN}/',
             )
-            return payload
-
-        # Raise Error if token is not valide anymore.
         except jwt.ExpiredSignatureError:
             raise AuthError({
                 'code': 'token_expired',
                 'description': 'Token expired.'
             }, 401)
 
-        # Raise Error if token is claiming wrong audience.
         except jwt.JWTClaimsError:
             raise AuthError({
                 'code': 'invalid_claims',
                 'description': 'Incorrect claims. Please, check the audience and issuer.'
             }, 401)
 
-        # In all other Error cases, give generic error message
         except Exception:
             raise AuthError({
                 'code': 'invalid_header',
